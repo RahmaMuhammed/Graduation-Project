@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Deepfake Detection Website</title>
+    <link href="{{ url_for('static', filename='css/DeepFake.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="Home" id="Home">
+        <div class="header">
+            <div class="navbar">
+                <h6 class="logo">
+                    <img src="static/Images/logo.png">
+                </h6>              
+                  <ul class="right">
+                    <li><a href="#Home">Home</a></li>
+                    <li><a href="#Slider">Samples</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="center-container">
+            <div class="center-container">
+                <div class="button-container">
+                    <label for="url-input" class="label1">Scan & Detect Deepfake Videos</label>
+                    <label for="url-input" class="label2">Place a video link or upload a video</label>
+                    <form id="upload-form" action="#" method="POST" enctype="multipart/form-data">
+                        <div class="form-input">
+                            <input type="file" id="video-input" name="video" class="hidden-input" accept="video/*" style="display: none;">
+                            <button type="button" class="button1" id="upload-button"><i class="fa-solid fs-1 fa-upload"></i></button>
+                            <input type="text" id="url-input" name="url" placeholder="Enter URL...">
+                        </div>
+                        <br>
+                        <button type="submit" id="submit-url-button" class="btn btn-primary">SCAN</button>
+                        <div class="loader"></div> <!-- Loader initially hidden -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="videos pt-5 Slider" id="Slider" style="overflow-x: hidden; text-align: center">
+        <div class="csslider infinity pt-5" id="slider1">
+            <input type="radio" name="slides" checked="checked" id="slides_1"/>
+            <input type="radio" name="slides" id="slides_2"/>
+            <input type="radio" name="slides" id="slides_3"/>
+            <input type="radio" name="slides" id="slides_4"/>
+            <input type="radio" name="slides" id="slides_5"/>
+            <ul class="m-auto">
+                <li>
+                    <video class="border" width="100%"  src="{{ url_for('static', filename='videos/Video1.mp4') }}"  controls>
+                        Your browser does not support the video tag.
+                    </video>
+                </li>
+                <li>
+                    <video width="100%"  src="{{ url_for('static', filename='videos/Video2.mp4') }}"  controls>
+                        Your browser does not support the video tag.
+                    </video>
+                </li>
+                <li>
+                    <video width="100%"  src="{{ url_for('static', filename='videos/Video3.mp4') }}"  controls>
+                        Your browser does not support the video tag.
+                    </video>
+                </li>
+                <li>
+                    <video width="100%"  src="{{ url_for('static', filename='videos/Video4.mp4') }}"  controls>
+                        Your browser does not support the video tag.
+                    </video>
+                </li>
+                <li>
+                    <video width="100%"  src="{{ url_for('static', filename='videos/Video5.mp4') }}"  controls>
+                        Your browser does not support the video tag.
+                    </video>
+                </li>
+                <!-- Add more video slides as needed -->
+            </ul>
+            <div class="arrows">
+                <label for="slides_1"></label>
+                <label for="slides_2"></label>
+                <label for="slides_3"></label>
+                <label for="slides_4"></label>
+                <label for="slides_5"></label>
+                <label class="goto-first" for="slides_1"></label>
+                <label class="goto-last" for="slides_5"></label>
+            </div>
+            <div class="navigation">
+                <div>
+                    <label for="slides_1"></label>
+                    <label for="slides_2"></label>
+                    <label for="slides_3"></label>
+                    <label for="slides_4"></label>
+                    <label for="slides_5"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js" integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{ url_for('static', filename='js/DeepFake.js') }}" type="text/javascript"></script>
+
+    <script>
+        
+    </script>
+</body>
+</html>

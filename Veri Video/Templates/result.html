@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Deepfake Detection Result</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/DeepFake.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div class="result">
+        <h1 class="text-center pt-5">Deepfake Detection Result</h1><br>
+        <div class="result-container">
+            <div>
+                <h2 class="w-20 text-center">Result: <span id="output">{{ video_info['output'] }}</span></h2>
+                <div class="row">
+                    <div class="col-12 text-left">
+                        <h3 class="d-inline-block">Confidence: <span id="confidence">{{ video_info['confidence'] }}</span></h3>
+                    </div>
+                </div>
+                <h3 class="w-20 text-center">Uploaded Video:</h3>
+            </div>
+
+            {% if video_info['uploaded_video'] %}
+            <div class="d-flex justify-content-between">
+                <video class="ss" id="uploaded-video-player" controls width="50%" height="auto">
+                    <source src="{{ url_for('uploaded_file', filename=video_info['uploaded_video']) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+
+                <div width="40%" class="question">
+                    <label for="ChooseRealOrFake">Did you expect the video to be real or fake?</label><br>
+                    <input type="radio" name="RealOrFake" id="Real">
+                    <label for="Real">Real</label><br>
+                    <input type="radio" name="RealOrFake" id="Fake">
+                    <label for="Fake">Fake</label>
+                </div>
+            </div>
+            {% else %}
+            <p>No video uploaded.</p>
+            {% endif %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Go Back</a>
+        </div>
+    </div>
+</body>
+</html>
